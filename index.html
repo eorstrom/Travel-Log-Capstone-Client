@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Travel Log</title>
+</head>
+<body ng-app="TravelLog">
+    
+    <h1>Welcome to Travel Log!</h1>
+    <h2>Reminisce about where you've been.</h2>
+
+    <div ng-view></div>
+
+    <!-- Dependencies -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular-route/angular-route.min.js"></script>
+    <script src="bower_components/oauth-js/dist/oauth.min.js"></script>
+
+    <!-- App Scripts -->
+    <script src="RegisterController.js"></script>
+    <script src="app/controllers/MainController.js"></script>
+    <script src="app/factories/AuthFactory.js"></script>
+    <script src="app/app.js"></script>
+</body>
+</html>

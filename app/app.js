@@ -1,7 +1,8 @@
 "use strict";
 
 let TravelLog = angular.module('TravelLog', [
-    'ngRoute'
+    'ngRoute',
+    // 'uiGmapgoogle-maps',
 ]);
 
 TravelLog.config(['$routeProvider', 
@@ -15,6 +16,11 @@ TravelLog.config(['$routeProvider',
             templateUrl: 'partials/register.html',
             controller: 'RegisterController'
         })
+        .when('/citySearch', {
+            templateUrl: 'partials/citySearch.html',
+            controller: 'CitySearchController'
+        })
         .otherwise('/');
   }
+
 ]);

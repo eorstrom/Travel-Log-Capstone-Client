@@ -6,7 +6,7 @@ TravelLog.controller('CitySearchController', [
     'AuthFactory',
 
     function ($http, $scope, AuthFactory) {
-        console.log("map map");       
+        console.log("function start");       
         var map;
           function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {

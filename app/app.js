@@ -2,7 +2,6 @@
 
 let TravelLog = angular.module('TravelLog', [
     'ngRoute',
-    // 'uiGmapgoogle-maps',
 ]);
 
 TravelLog.config(['$routeProvider', 
@@ -15,10 +14,6 @@ TravelLog.config(['$routeProvider',
         .when('/register', {
             templateUrl: 'partials/register.html',
             controller: 'RegisterController'
-        })
-        .when('/citySearch', {
-            templateUrl: 'partials/citySearch.html',
-            controller: 'CitySearchController'
         })
         .otherwise('/');
   }

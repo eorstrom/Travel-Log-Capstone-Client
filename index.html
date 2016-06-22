@@ -1,47 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Travel Log</title>
-    <link rel="stylesheet" type="text/css" href="styles/mainstyles.css">
-</head>
-<body ng-app="TravelLog">
+    <head>
+        <meta charset="UTF-8">
+        <title>Travel Log</title>
+        <link rel="stylesheet" type="text/css" href="styles/mainstyles.css">
+    </head>
+
+    <body ng-app="TravelLog">
     
-    <h1>Welcome to Travel Log!</h1>
-    <h2>Reminisce about where you've been.</h2>
+        <h1>Welcome to Travel Log!</h1>
+        <h2>Reminisce about where you've been.</h2>
+        
+        <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+        <div id="map"></div>
 
-    <div id="map"></div>
+        <!-- <div ng-view></div> -->
 
-    <div ng-view></div>
 
-    <!-- Dependencies -->
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="node_modules/angular/angular.min.js"></script>
-    <script src="node_modules/angular-route/angular-route.min.js"></script>
-    <script src="bower_components/oauth-js/dist/oauth.min.js"></script>
+        <script>
+      // This example adds a search box to a map, using the Google Place Autocomplete
+      // feature. People can enter geographical searches. The search box will return a
+      // pick list containing a mix of places and predicted search terms.
 
-    <script async defer src="https://maps.googleapis.com/maps/api/js?callback=angular.noop"></script>
+      // This example requires the Places library. Include the libraries=places
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
-     <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4zkEYNSCTlHTBwI00YBtX_898kRBoOSY&callback=initMap"
-    async defer></script> -->
+      function initAutocomplete() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -33.8688, lng: 151.2195},
+          zoom: 13,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
 
-    <!-- Main App Script -->
-    <script src="app/app.js"></script>
+        // Create the search box and link it to the UI element.
+        var input = document.getElementById('pac-input');
+        var searchBox = new google.maps.places.SearchBox(input);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
-    <!-- App Scripts -->
-    <script src="app/controllers/CitySearchController.js"></script>
-    <script src="app/controllers/RegisterController.js"></script>
-    <script src="app/controllers/MainController.js"></script>
-    <script src="app/factories/AuthFactory.js"></script>
-    
-    <!-- Google Maps API -->
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyB4zkEYNSCTlHTBwI00YBtX_898kRBoOSY"></script> -->
+        // Bias the SearchBox results towards current map's viewport.
+        map.addListener('bounds_changed', function() {
+          searchBox.setBounds(map.getBounds());
+        });
 
-   
+        var markers = [];
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener('places_changed', function() {
+          var places = searchBox.getPlaces();
 
-    <!-- Angular Google Maps -->
-    <!-- <script src="/node_modules/angular-google-maps/node_modules/lodash"></script> -->
-    <!-- <script src="/node_modules/angular-google-maps/node_modules/angular-simple-logger/dist/angular-simple-logger.min.js"></script> -->
-    <!-- <script src="/node_modules/angular-google-maps/dist/angular-google-maps.min.js"></script> -->
-</body>
+          if (places.length == 0) {
+            return;
+          }
+
+          // Clear out the old markers.
+          markers.forEach(function(marker) {
+            marker.setMap(null);
+          });
+          markers = [];
+
+          // For each place, get the icon, name and location.
+          var bounds = new google.maps.LatLngBounds();
+          places.forEach(function(place) {
+            var icon = {
+              url: place.icon,
+              size: new google.maps.Size(71, 71),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(17, 34),
+              scaledSize: new google.maps.Size(25, 25)
+            };
+
+            // Create a marker for each place.
+            markers.push(new google.maps.Marker({
+              map: map,
+              icon: icon,
+              title: place.name,
+              position: place.geometry.location
+            }));
+
+            if (place.geometry.viewport) {
+              // Only geocodes have viewport.
+              bounds.union(place.geometry.viewport);
+            } else {
+              bounds.extend(place.geometry.location);
+            }
+          });
+          map.fitBounds(bounds);
+        });
+      }
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4zkEYNSCTlHTBwI00YBtX_898kRBoOSY&libraries=places&callback=initAutocomplete"
+         async defer></script>
+
+
+        <!-- Google Maps Script -->
+        <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?callback=angular.noop"></script> -->
+        
+        <!-- Google Places Library API -->
+        <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4zkEYNSCTlHTBwI00YBtX_898kRBoOSY&libraries=places"></script> -->
+        
+        <!-- Dependencies -->
+        <script src="node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="node_modules/angular/angular.min.js"></script>
+        <script src="node_modules/angular-route/angular-route.min.js"></script>
+        <script src="bower_components/oauth-js/dist/oauth.min.js"></script>
+
+        <!-- Main App Script -->
+        <script src="app/app.js"></script>
+
+        <!-- App Scripts -->
+        <!-- <script src="app/controllers/RegisterController.js"></script> -->
+        <!-- <script src="app/controllers/MainController.js"></script> -->
+        <!-- <script src="app/factories/AuthFactory.js"></script> -->
+    </body>
 </html>

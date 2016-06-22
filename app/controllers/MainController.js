@@ -13,6 +13,17 @@ TravelLog.controller('MainController', [
         // $scope.filterField = '';
         // $scope.filterText = '';
 
+        console.log("function start");       
+        $scope.map;
+          function initMap() {
+            $scope.map = new google.maps.Map(document.getElementById('map'), {
+              center: {lat: 36.1868361, lng: -86.9253287},
+              zoom: 8
+            });
+          }
+
+        initMap();
+
         $http
             .get('http://localhost:5000/api/Cities')
             .success(inv => $scope.cities = inv);

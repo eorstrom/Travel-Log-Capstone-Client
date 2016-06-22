@@ -1,4 +1,10 @@
-/* Map Styling */
+/* GENERAL STYLING */
+
+h1, h2, h3, h4 {
+    text-align: center;
+}
+
+/* MAP STYLING */
 
 html, body {
     height: 100%;

@@ -7,7 +7,7 @@ TravelLog.controller('MainController', [
 
     function ($http, $scope, AuthFactory) {
 
-        $scope.cities = [];
+        $scope.restaurants = [];
         $scope.user = AuthFactory.getUser();
 
         // $scope.filterField = '';
@@ -25,17 +25,17 @@ TravelLog.controller('MainController', [
         initMap();
 
         $http
-            .get('http://localhost:5000/api/Cities')
-            .success(inv => $scope.cities = inv);
+            .get('http://localhost:5000/api/Restaurants')
+            .success(inv => $scope.restaurants = inv);
 
-        $scope.deleteCity = function (id) {
+        $scope.deleteRestaurant = function (id) {
             $http({
                 method: "DELETE",
-                url: `http://localhost:5000/api/Cities/${id}`
+                url: `http://localhost:5000/api/Restaurants/${id}`
             })
             .then(
-                () => console.log("City deleted"),
-                () => console.log("City not deleted")
+                () => console.log("Restaurant deleted"),
+                () => console.log("Restaurant not deleted")
             );
         }
     }

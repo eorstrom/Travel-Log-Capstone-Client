@@ -9,11 +9,15 @@ TravelLog.config(['$routeProvider',
     $routeProvider
         .when('/', {
             templateUrl: 'partials/main.html',
-            controller: 'MainController'
+            controller: 'MapController'
         })
         .when('/register', {
             templateUrl: 'partials/register.html',
             controller: 'RegisterController'
+        })
+        .when('/locationsList', {
+            templateUrl: 'partials/locationsList.html',
+            controller: 'MainController'
         })
         .otherwise('/');
   }

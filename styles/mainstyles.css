@@ -4,9 +4,29 @@ h1, h2, h3, h4 {
     text-align: center;
 }
 
+button#add {
+    display: block;
+    float: right;
+}
+
+#locationsList {
+    display: block;
+    float: right;
+    clear: right;
+}
+
+.uInput {
+    margin: 1em;
+    display: block;
+}
+
+.input {
+    margin: 2em 5em;
+}
+
 /* MAP STYLING */
 
-html, body {
+html, body, .container {
     height: 100%;
     margin: 0;
     padding: 0;
@@ -15,7 +35,7 @@ html, body {
 #map {
     height: 80%;
     width: 80%;
-    margin: 0 auto;
+    margin: 2em auto;
 }
 
 .controls {
@@ -61,4 +81,14 @@ html, body {
 }
     #target {
     width: 345px;
+}
+
+/* FOOTER STYLING */
+
+#footer {
+    margin: 2em auto;
+}
+
+div#footer p {
+    text-align: center;
 }

@@ -17,7 +17,7 @@ TravelLog.config(['$routeProvider',
         })
         .when('/locationsList', {
             templateUrl: 'partials/locationsList.html',
-            controller: 'MainController'
+            controller: 'ListsController'
         })
         .otherwise('/');
   }

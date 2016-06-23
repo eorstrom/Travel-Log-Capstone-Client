@@ -15,14 +15,15 @@ TravelLog.controller('MainController', [
 
         console.log("function start");       
         $scope.map;
+            var marker;
+            var infowindow;
           function initMap() {
             $scope.map = new google.maps.Map(document.getElementById('map'), {
               center: {lat: 36.1868361, lng: -86.9253287},
               zoom: 8
-            });
-          }
-
-        initMap();
+            })
+            }
+            initMap();
 
         $http
             .get('http://localhost:5000/api/Restaurants')

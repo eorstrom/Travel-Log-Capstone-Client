@@ -7,20 +7,33 @@
     </head>
 
     <body ng-app="TravelLog">
-    
-        <h1>Welcome to Travel Log!</h1>
-        <h2>Reminisce about where you've been.</h2>
+        <div class="container">
+            <h1>Welcome to Travel Log!</h1>
+            <h2>Reminisce about where you've been.</h2>
 
-        <h4>Where would you like to travel today?</h4>
-        <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+            <div class="input" ng-controller="UserInputController">
+                <h4>Where would you like to travel today?</h4>
 
-        <a href="#/locationsList">See Your Lists</a>
+                <label for="name">Restaurant Name:</label>
+                    <input class="uInput" type="text" name="restaurantName" ng-model="restaurant.Name" placeholder="Enter Name">
+                <label for="name">Restaurant Address:</label>
+                    <input class="uInput" type="text" name="restaurantAddress" ng-model="restaurant.Address" placeholder="Enter Address">
 
-        <div id="map"></div>
+                <!-- Add the Location to the Restaurants Table in Database -->
+                <button id="add" ng-click="addRestaurant()">Add This Location</button>
 
-        <!-- <div ng-view></div> -->
-        
+                <a id="locationsList" href="#/locationsList">See Your Lists</a>
+            </div>
 
+            <input id="pac-input" class="controls" type="text" placeholder="Search Box">      
+
+            <div id="map"></div>
+
+            <!-- <div ng-view></div> -->
+            
+            <div ng-include="'partials/footer.html'" scope="" onload=""></div>
+
+        </div>
 
         <script src="app/Map.js"></script>
 
@@ -46,6 +59,9 @@
         <!-- App Scripts -->
         
         <!-- <script src="app/controllers/RegisterController.js"></script> -->
+        <script src="app/controllers/UserInputController.js"></script>
+        <!-- <script src="app/controllers/ListsController.js"></script> -->
+        <script src="app/controllers/FooterController.js"></script>
         <script src="app/controllers/MainController.js"></script>
         <!-- <script src="app/factories/AuthFactory.js"></script> -->
     </body>

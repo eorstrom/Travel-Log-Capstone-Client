@@ -69,13 +69,48 @@ searchBox.addListener('places_changed', function() {
     }
   });
   map.fitBounds(bounds);
+
+    google.maps.event.addListener(map, "click", function (e) {
+        var latLng = e.latLng;
+        console.log("latLng", latLng);
+    })
+
 });
 
+
+
+
+// document.querySelector('#pac-input').value = userInput;
+// console.log("userInput");
+
+// input.addEventListener('click', function () {
+//     let userInput;
+//     if (input.value != "") {
+//         input.value = userInput;
+//     }
+//     console.log("userInput", userInput);
+//     return userInput;
+// });
+
+// document.querySelector('#pac-input').addEventListener('keypress', function (e) {
+//     let userInput;
+//     var key = e.which || e.keyCode;
+//     if (key === 13) { // 13 is enter
+//       ('#pac-input').innerHTML = userInput;
+//     }
+//     console.log("userInput", userInput);
+//     return userInput;
+// });
+
 // Add Marker
-var marker = new google.maps.Marker({
-    position: NashCoords,
-    map: map,
-    title: 'Hello World!'
-});
+    // var marker = new google.maps.Marker({
+    //     // position: NashCoords,
+    //     map: map,
+    //     // title: 'Hello World!'
+    //     place: {
+    //         placeId: results[0].place_id,
+    //         location: results[0].geometry.location
+    //     }
+    // });
 }
 

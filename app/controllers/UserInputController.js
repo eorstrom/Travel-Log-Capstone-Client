@@ -9,6 +9,8 @@ TravelLog.controller("UserInputController",
 
     // Default property values for keys bound to input fields
     $scope.restaurant = {
+        Name: "",
+        Address: "",
         Visited: false,
         CityId: 1
     };

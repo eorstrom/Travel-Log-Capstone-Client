@@ -58,7 +58,8 @@ searchBox.addListener('places_changed', function() {
       map: map,
       icon: icon,
       title: place.name,
-      position: place.geometry.location
+      position: place.geometry.location,
+      customInfo: "Marker A"
     }));
 
     if (place.geometry.viewport) {
@@ -72,6 +73,7 @@ searchBox.addListener('places_changed', function() {
 
     google.maps.event.addListener(map, "click", function (e) {
         var latLng = e.latLng;
+        alert(this.customInfo);
         console.log("latLng", latLng);
     })
 
@@ -92,15 +94,6 @@ searchBox.addListener('places_changed', function() {
 //     return userInput;
 // });
 
-// document.querySelector('#pac-input').addEventListener('keypress', function (e) {
-//     let userInput;
-//     var key = e.which || e.keyCode;
-//     if (key === 13) { // 13 is enter
-//       ('#pac-input').innerHTML = userInput;
-//     }
-//     console.log("userInput", userInput);
-//     return userInput;
-// });
 
 // Add Marker
     // var marker = new google.maps.Marker({

@@ -3,15 +3,9 @@
 TravelLog.controller('MainController', [
     '$http', 
     '$scope',
-    'AuthFactory',
+    // 'AuthFactory',
 
-    function ($http, $scope, AuthFactory) {
-
-        $scope.restaurants = [];
-        $scope.user = AuthFactory.getUser();
-
-        // $scope.filterField = '';
-        // $scope.filterText = '';
+    function ($http, $scope) {
 
         console.log("function start");       
         $scope.map;
@@ -25,9 +19,12 @@ TravelLog.controller('MainController', [
             }
             initMap();
 
-        $http
-            .get('http://localhost:5000/api/Restaurants')
-            .success(inv => $scope.restaurants = inv);
+        // $scope.restaurants = []; 
+        // $scope.user = AuthFactory.getUser();
+
+        // $http
+        //     .get('http://localhost:5000/api/Restaurants')
+        //     .success(r => $scope.restaurants = r);
 
         $scope.deleteRestaurant = function (id) {
             $http({

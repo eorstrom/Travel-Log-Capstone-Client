@@ -6,7 +6,7 @@ h1, h2, h3, h4 {
 
 button#add {
     display: block;
-    float: right;
+    margin-left: 1em;
 }
 
 #locationsList {
@@ -20,8 +20,16 @@ button#add {
     display: block;
 }
 
-.input {
+div.input {
+    width: 30%;
+    float: left;
+    margin: 1em 1em;
+}
+
+.locations {
     margin: 2em 5em;
+    float: right;
+    width: 30%;
 }
 
 /* MAP STYLING */

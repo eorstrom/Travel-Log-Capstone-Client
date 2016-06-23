@@ -19,17 +19,20 @@
                 <label for="name">Restaurant Address:</label>
                     <input class="uInput" type="text" name="restaurantAddress" ng-model="restaurant.Address" placeholder="Enter Address">
 
-                <!-- Add the Location to the Restaurants Table in Database -->
                 <button id="add" ng-click="addRestaurant()">Add This Location</button>
+            </div>
 
+            <!-- Add the Location to the Restaurants Table in Database -->
+            <div class="locations" ng-controller="ListsController">
                 <a id="locationsList" href="#/locationsList">See Your Lists</a>
             </div>
+            <div ng-view></div>
 
             <input id="pac-input" class="controls" type="text" placeholder="Search Box">      
 
             <div id="map"></div>
 
-            <!-- <div ng-view></div> -->
+            
             
             <div ng-include="'partials/footer.html'" scope="" onload=""></div>
 
@@ -60,7 +63,7 @@
         
         <!-- <script src="app/controllers/RegisterController.js"></script> -->
         <script src="app/controllers/UserInputController.js"></script>
-        <!-- <script src="app/controllers/ListsController.js"></script> -->
+        <script src="app/controllers/ListsController.js"></script>
         <script src="app/controllers/FooterController.js"></script>
         <script src="app/controllers/MainController.js"></script>
         <!-- <script src="app/factories/AuthFactory.js"></script> -->

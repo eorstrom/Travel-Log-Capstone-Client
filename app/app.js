@@ -7,10 +7,6 @@ let TravelLog = angular.module('TravelLog', [
 TravelLog.config(['$routeProvider', 
   function ($routeProvider) {
     $routeProvider
-        .when('/', {
-            templateUrl: 'partials/main.html',
-            controller: 'MapController'
-        })
         .when('/register', {
             templateUrl: 'partials/register.html',
             controller: 'RegisterController'

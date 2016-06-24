@@ -15,28 +15,42 @@
                 <h4>Where would you like to travel today?</h4>
 
                 <label for="name">Restaurant Name:</label>
-                    <input class="uInput" type="text" name="restaurantName" ng-model="restaurant.Name" placeholder="Enter Name">
+                    <input class="uInput" 
+                           type="text" 
+                           name="restaurantName" 
+                           ng-model="restaurant.Name" 
+                           placeholder="Enter Name">
+
                 <label for="name">Restaurant Address:</label>
-                    <input class="uInput" type="text" name="restaurantAddress" ng-model="restaurant.Address" placeholder="Enter Address">
+                    <input class="uInput" 
+                           type="text" 
+                           name="restaurantAddress" 
+                           ng-model="restaurant.Address" 
+                           placeholder="Enter Address">
 
                 <button id="add" ng-click="addRestaurant()">Add This Location</button>
             </div>
 
             <!-- Add the Location to the Restaurants Table in Database -->
-            <div class="locations" ng-controller="ListsController">
-                <a id="locationsList" href="#/locationsList">See Your Lists</a>
+            <div class="locations" 
+                 ng-controller="ListsController">
+
+                <a id="locationsListLink" href="#/locationsList">See Your Lists</a>
             </div>
+            
             <div ng-view></div>
 
-            <input id="pac-input" class="controls" type="text" placeholder="Search Box">      
+            <input id="pac-input" 
+                   class="controls" 
+                   type="text" 
+                   placeholder="Search Box">      
 
             <div id="map"></div>
 
-            
-            
             <div ng-include="'partials/footer.html'" scope="" onload=""></div>
 
         </div>
+
 
         <script src="app/Map.js"></script>
 

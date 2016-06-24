@@ -9,10 +9,24 @@ button#add {
     margin-left: 1em;
 }
 
-#locationsList {
+#locationsListLink {
     display: block;
     float: right;
     clear: right;
+}
+
+.locationsList {
+    display: inline-block;
+    float: right;
+    clear: right;
+    width: 25%;
+    text-align: left;
+    border: 1px solid #000;
+    margin-right: 1em;
+}
+
+.listedRs {
+    padding: .5em;
 }
 
 .uInput {
@@ -23,13 +37,13 @@ button#add {
 div.input {
     width: 30%;
     float: left;
-    margin: 1em 1em;
+    margin: 1em 2em;
 }
 
 .locations {
     margin: 2em 5em;
     float: right;
-    width: 30%;
+    width: 35%;
 }
 
 /* MAP STYLING */
@@ -41,8 +55,8 @@ html, body, .container {
 }
 
 #map {
-    height: 80%;
-    width: 80%;
+    height: 50%;
+    width: 50%;
     margin: 2em auto;
 }
 

@@ -26,16 +26,6 @@ TravelLog.controller('MainController', [
         //     .get('http://localhost:5000/api/Restaurants')
         //     .success(r => $scope.restaurants = r);
 
-        $scope.deleteRestaurant = function (id) {
-            $http({
-                method: "DELETE",
-                url: `http://localhost:5000/api/Restaurants/${id}`
-            })
-            .then(
-                () => console.log("Restaurant deleted"),
-                () => console.log("Restaurant not deleted")
-            );
-        }
     }
 
 ]);

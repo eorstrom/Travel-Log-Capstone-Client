@@ -1,26 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Travel Log</title>
-</head>
-<body ng-app="TravelLog">
-    
-    <h1>Welcome to Travel Log!</h1>
-    <h2>Reminisce about where you've been.</h2>
+    <head>
+        <meta charset="UTF-8">
+        <title>Travel Log</title>
+        <link rel="stylesheet" type="text/css" href="styles/mainstyles.css">
+    </head>
 
-    <div ng-view></div>
+    <body ng-app="TravelLog">
+        <div class="container">
+            <h1>Welcome to Travel Log!</h1>
+            <h2>Reminisce about where you've been.</h2>
 
-    <!-- Dependencies -->
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="node_modules/angular/angular.min.js"></script>
-    <script src="node_modules/angular-route/angular-route.min.js"></script>
-    <script src="bower_components/oauth-js/dist/oauth.min.js"></script>
+            <div class="input" ng-controller="UserInputController">
+                <h4>Where would you like to travel today?</h4>
 
-    <!-- App Scripts -->
-    <script src="RegisterController.js"></script>
-    <script src="app/controllers/MainController.js"></script>
-    <script src="app/factories/AuthFactory.js"></script>
-    <script src="app/app.js"></script>
-</body>
+                <label for="name">Restaurant Name:</label>
+                    <input class="uInput" 
+                           type="text" 
+                           name="restaurantName" 
+                           ng-model="restaurant.Name" 
+                           placeholder="Enter Name">
+
+                <label for="name">Restaurant Address:</label>
+                    <input class="uInput" 
+                           type="text" 
+                           name="restaurantAddress" 
+                           ng-model="restaurant.Address" 
+                           placeholder="Enter Address">
+
+                <button id="add" ng-click="addRestaurant()">Add This Location</button>
+            </div>
+
+            <!-- Add the Location to the Restaurants Table in Database -->
+            <div class="locations" 
+                 ng-controller="ListsController">
+
+                <a id="locationsListLink" href="#/locationsList">See Your Lists</a>
+            </div>
+            
+            <div ng-view></div>
+
+            <input id="pac-input" 
+                   class="controls" 
+                   type="text" 
+                   placeholder="Search Box">      
+
+            <div id="map"></div>
+
+            <div ng-include="'partials/footer.html'" scope="" onload=""></div>
+
+        </div>
+
+
+        <script src="app/Map.js"></script>
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4zkEYNSCTlHTBwI00YBtX_898kRBoOSY&libraries=places&callback=initAutocomplete"
+         async defer></script>
+
+
+        <!-- Google Maps Script -->
+        <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?callback=angular.noop"></script> -->
+        
+        <!-- Google Places Library API -->
+        <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4zkEYNSCTlHTBwI00YBtX_898kRBoOSY&libraries=places"></script> -->
+        
+        <!-- Dependencies -->
+        <script src="node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="node_modules/angular/angular.min.js"></script>
+        <script src="node_modules/angular-route/angular-route.min.js"></script>
+        <script src="bower_components/oauth-js/dist/oauth.min.js"></script>
+
+        <!-- Main App Script -->
+        <script src="app/app.js"></script>
+
+        <!-- App Scripts -->
+        
+        <!-- <script src="app/controllers/RegisterController.js"></script> -->
+        <script src="app/controllers/UserInputController.js"></script>
+        <script src="app/controllers/ListsController.js"></script>
+        <script src="app/controllers/FooterController.js"></script>
+        <script src="app/controllers/MainController.js"></script>
+        <!-- <script src="app/factories/AuthFactory.js"></script> -->
+    </body>
 </html>

@@ -1,0 +1,15 @@
+<section class="locationsList" 
+         ng-controller="ListsController">
+    <!-- <a href="/#/">Back to Homepage</a> -->
+    <h4>Want to Visit</h4>
+        <div class="listedRs" ng-repeat="restaurant in restaurants">
+            <input type="checkbox" 
+                   name="visited">
+            {{ restaurant.Name }}
+            <p>Address: {{ restaurant.Address }}</p>
+            <button class="delete" ng-click="deleteRestaurant(restaurant.RestaurantId)">Delete</button>
+            <hr>
+        </div>
+    </div>
+    <h4>Visited</h4>
+</section>
